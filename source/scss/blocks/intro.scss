@@ -87,15 +87,13 @@
 }
 
 .intro__message {
+  @include opacity-transform;
   max-width: 50%;
   width: 50.9rem;
   font-size: 2.4rem;
   line-height: 1.27;
   text-transform: uppercase;
-  opacity: 0;
   transform: translateY(15px);
-  transition-duration: $duration-m;
-  transition-property: opacity, transform;
   flex: none;
 
   @media (min-width: $stop-scaling) {
