@@ -127,8 +127,13 @@
     line-height: 1.5rem;
   }
 
-  .swiper-slide-active &,
-  .swiper-slide-next & {
+  .screen--story.screen--hidden .swiper-slide-active &,
+  .screen--story.screen--hidden .swiper-slide-next & {
+    @include opacity-transform;
+  }
+
+  .screen--story.active .swiper-slide-active &,
+  .screen--story.active .swiper-slide-next & {
     opacity: 1;
     transform: translateX(0);
   }
