@@ -241,7 +241,7 @@
     display: block;
     padding: 0 0.5em 0.5em;
     color: inherit;
-    transition-duration: 0.3s;
+    transition-duration: $duration;
     transition-property: color;
 
     &::after {
@@ -251,7 +251,7 @@
       width: 0;
       height: 2px;
       background-color: $c-light;
-      transition-duration: 0.3s;
+      transition-duration: $duration;
       transition-property: width, background-color;
       content: "";
 
