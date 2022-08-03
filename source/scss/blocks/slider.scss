@@ -98,7 +98,7 @@
   font-size: 1.8rem;
   line-height: 2rem;
   transform: translateX(25px);
-  transition-delay: $duration-m;
+  transition-delay: $duration;
 
   @media (min-width: $stop-scaling) {
     max-width: 340px;
@@ -139,7 +139,7 @@
   }
 
   .swiper-slide-next & {
-    transition-delay: $duration-m-l;
+    transition-delay: $duration-m;
   }
 }
 

@@ -61,6 +61,6 @@
 
 @mixin opacity-transform {
   opacity: 0;
-  transition-duration: $duration-m;
+  transition-duration: $duration;
   transition-property: transform, opacity;
 }

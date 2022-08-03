@@ -18,7 +18,7 @@
   height: 4rem;
   color: $c-dark;
   border-radius: 50%;
-  transition-duration: $duration;
+  transition-duration: $duration-s;
   transition-property: background-color;
 
   @media (max-width: $tablet) and (orientation: portrait) {
@@ -36,7 +36,7 @@
     height: 100%;
     background-color: $c-light;
     border-radius: 50%;
-    transition-duration: $duration;
+    transition-duration: $duration-s;
     transition-property: all;
     content: "";
   }
@@ -46,7 +46,7 @@
     display: block;
     width: 2.3rem;
     height: 2.2rem;
-    transition-duration: $duration;
+    transition-duration: $duration-s;
     transition-property: all;
   }
 
@@ -95,7 +95,7 @@
   right: 0;
   margin-top: 1.5rem;
   opacity: 0;
-  transition-duration: $duration;
+  transition-duration: $duration-s;
   transition-property: opacity;
   pointer-events: none;
 
@@ -219,7 +219,7 @@
 
   &--fb {
     transition: opacity $duration-m linear, transform $duration-m ease-out,
-      color $duration;
+      color $duration-s;
 
     svg {
       width: 0.8rem;
@@ -234,7 +234,7 @@
 
   &--insta {
     transition: opacity $duration-m linear 300ms,
-      transform $duration-m ease-out 300ms, color $duration;
+      transform $duration-m ease-out 300ms, color $duration-s;
 
     svg {
       width: 1.5rem;
@@ -249,7 +249,7 @@
 
   &--vk {
     transition: opacity $duration-m linear 600ms,
-      transform $duration-m ease-out 600ms, color $duration;
+      transform $duration-m ease-out 600ms, color $duration-s;
 
     svg {
       width: 1.7rem;
