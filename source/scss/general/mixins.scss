@@ -5,9 +5,9 @@
 }
 
 @mixin container {
+  width: 100%;
   margin: 0 auto;
   padding: 0 4rem;
-  width: 100%;
 
   @media (min-width: $stop-scaling) {
     padding: 0 40px;
@@ -23,14 +23,14 @@
 }
 
 @mixin list-reset {
-  padding: 0;
   margin: 0;
+  padding: 0;
   list-style: none;
 }
 
 @mixin btn-reset {
-  padding: 0;
   margin: 0;
+  padding: 0;
   background: none;
   border: none;
   cursor: pointer;
@@ -47,8 +47,8 @@
   }
 
   &:focus {
-    outline: none;
     opacity: 0.7;
+    outline: none;
   }
 }
 
@@ -57,4 +57,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+@mixin opacity-transform {
+  opacity: 0;
+  transition-duration: $duration;
+  transition-property: transform, opacity;
 }
