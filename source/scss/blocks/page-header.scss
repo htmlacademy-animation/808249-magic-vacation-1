@@ -27,6 +27,7 @@
 }
 
 .page-header__logo {
+  @include opacity-transform;
   @include hover;
   position: relative;
   top: -0.5rem;
@@ -34,7 +35,14 @@
   width: 10rem;
   padding: 1rem 0;
   color: $c-light;
+  transform: translateX(-5rem);
+  transition-duration: $duration-m;
   flex: none;
+
+  .loaded & {
+    opacity: 1;
+    transform: translateX(0);
+  }
 
   @media (min-width: $stop-scaling) {
     top: -5px;
@@ -69,6 +77,12 @@
     width: 100%;
     height: auto;
   }
+}
+
+.page-header__logo,
+.page-header__menu,
+.page-header__menu a.active::after {
+  transition-timing-function: cubic-bezier(0.36, 1.19, 1, 0.91);
 }
 
 .page-header__toggler {
@@ -177,6 +191,13 @@
   font-weight: 400;
   text-transform: uppercase;
   color: $c-light;
+  opacity: 0;
+  transition-duration: $duration-m;
+  transition-property: opacity;
+
+  .loaded & {
+    opacity: 1;
+  }
 
   @media (min-width: $stop-scaling) {
     font-size: 12px;
@@ -268,10 +289,14 @@
       }
     }
 
-    &.active {
-      &::after {
-        width: 100%;
-      }
+    &.active::after {
+      width: 0;
+      transition-duration: $duration-m;
+      transition-property: width;
+    }
+
+    .loaded &.active::after {
+      width: 100%;
     }
 
     &:hover,
