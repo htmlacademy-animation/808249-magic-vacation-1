@@ -267,8 +267,8 @@
 
     &::after {
       position: absolute;
+      right: 0;
       bottom: 0;
-      left: 0;
       width: 0;
       height: 2px;
       background-color: $c-light;
@@ -291,8 +291,8 @@
 
     &.active::after {
       width: 0;
-      transition-duration: $duration-m;
-      transition-property: width;
+      transition-duration: $duration-s;
+      transition-property: background-color;
     }
 
     .loaded &.active::after {
@@ -305,6 +305,8 @@
       outline: none;
 
       &::after {
+        right: auto;
+        left: 0;
         width: 100%;
         background-color: $c-purple;
       }
