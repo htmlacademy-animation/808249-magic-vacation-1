@@ -1,0 +1,21 @@
+@keyframes popupText {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+.animation-text {
+  display: inline-flex;
+  overflow: hidden;
+  line-height: 1.15;
+}
+
+.animation-text > span {
+  animation-name: popup;
+  animation-fill-mode: backwards;
+  animation-timing-function: ease-out;
+}

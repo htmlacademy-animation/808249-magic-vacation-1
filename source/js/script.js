@@ -23,7 +23,10 @@ social();
 load();
 
 const fullPageScroll = new FullPageScroll();
-const animationIntroTitle = new Wrap({elementSelector: `.intro__title`});
+const animationIntroTitle = new Wrap({
+  elementSelector: `.intro__title`,
+  hasSeveraLines: true,
+});
 const animationDate = new Wrap({elementSelector: `.intro__date`, delay: 700});
 const animationStoryTitle = new Wrap({
   elementSelector: `.slider__item-title`,

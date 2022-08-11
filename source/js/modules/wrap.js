@@ -1,18 +1,10 @@
-const MIN_DELAY_FOR_LETTER = 20;
+const MIN_DELAY_FOR_LETTER = 30;
 const DEFAULT_DURATION = 500;
-const DEFAULT_PROPERTY = `transform`;
-const DEFAULT_CLASS_ANIMATION = `growth-animation`;
 
 export default class Wrap {
-  constructor({
-    elementSelector,
-    classAnimationActivation = DEFAULT_CLASS_ANIMATION,
-    property = DEFAULT_PROPERTY,
-    delay = 0,
-  }) {
+  constructor({elementSelector, hasSeveraLines = false, delay = 0}) {
     this._duration = DEFAULT_DURATION;
-    this._classAnimationActivation = classAnimationActivation;
-    this._property = property;
+    this._hasSeveraLines = hasSeveraLines;
     this._element = document.querySelector(elementSelector);
     this._delay = delay;
 
@@ -39,9 +31,8 @@ export default class Wrap {
       return span;
     }
 
-    span.style.transitionProperty = this._property;
-    span.style.transitionDuration = `${this._timer}ms`;
-    span.style.transitionDelay = `${
+    span.style.animationDuration = `${this._duration}ms`;
+    span.style.animationDelay = `${
       wordNumber * (wordLength * MIN_DELAY_FOR_LETTER) + delay + this._delay
     }ms`;
 
@@ -55,7 +46,7 @@ export default class Wrap {
 
     let text = this._element.textContent;
 
-    if (!text.includes(` `)) {
+    if (this._hasSeveraLines) {
       text = text
         .trim()
         .split(` `)
@@ -85,17 +76,5 @@ export default class Wrap {
 
     this._element.innerHTML = ``;
     this._element.appendChild(content);
-  }
-
-  runAnimation() {
-    if (!this._element) {
-      return;
-    }
-
-    this._element.classList.add(this._classAnimationActivation);
-  }
-
-  destroyAnimation() {
-    this._element.classList.remove(this._classAnimationActivation);
   }
 }
