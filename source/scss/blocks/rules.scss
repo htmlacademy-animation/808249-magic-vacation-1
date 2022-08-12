@@ -8,16 +8,6 @@
   }
 }
 
-@keyframes opacityChange {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
 @keyframes leftShift {
   from {
     transform: translateX(10px);
@@ -35,16 +25,6 @@
 
   to {
     width: 100%;
-  }
-}
-
-@keyframes displayBtnText {
-  from {
-    color: transparent;
-  }
-
-  to {
-    color: $c-dark;
   }
 }
 
@@ -246,7 +226,7 @@
     line-height: 5rem;
     font-weight: 400;
     text-align: center;
-    animation-name: opacityChange;
+    animation-name: itemOpacity;
     animation-duration: $duration-s;
     animation-fill-mode: backwards;
     content: counter(li);
@@ -269,7 +249,7 @@
 
   p {
     margin: 0;
-    animation-name: opacityChange, leftShift;
+    animation-name: itemOpacity, leftShift;
     animation-duration: $duration-s;
     animation-fill-mode: backwards;
 
@@ -303,7 +283,7 @@
   position: absolute;
   right: 5.6rem;
   bottom: 6rem;
-  animation-name: displayBtnText;
+  animation-name: changeColor;
   animation-duration: $duration-s;
   animation-delay: 1.3s;
   animation-fill-mode: backwards;
@@ -332,7 +312,7 @@
     right: 0;
     left: auto;
     transform: translate(0%, -50%);
-    animation-name: opacityChange, increaseBtn;
+    animation-name: itemOpacity, increaseBtn;
     animation-duration: 0.1ms, $duration-s;
     animation-delay: 1s, 1s;
     animation-fill-mode: backwards;

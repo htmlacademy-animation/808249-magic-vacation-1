@@ -31,7 +31,7 @@
 }
 
 .form__field {
-  width: 0;
+  width: calc(100% - 21rem);
   height: 6rem;
   margin-right: 3rem;
   padding: 0 5.6rem;
@@ -42,8 +42,10 @@
   color: $c-dark;
   border: 0;
   border-radius: 3rem;
-  transition-duration: $duration-m;
-  transition-property: width;
+  animation-name: increaseInput;
+  animation-duration: $duration-m;
+  animation-fill-mode: backwards;
+  animation-timing-function: ease-in-out;
   flex: none;
   outline: none;
 
@@ -78,10 +80,6 @@
     margin-right: 1rem;
     padding: 0 2.5rem;
     font-size: 1.6rem;
-  }
-
-  .screen--game.active & {
-    width: calc(100% - 21rem);
   }
 }
 
@@ -132,6 +130,11 @@
 .form--result {
   .form__field {
     width: calc(100% - 31rem);
+    animation-name: increaseInput;
+    animation-duration: $duration-s;
+    animation-delay: 1.2s;
+    animation-fill-mode: backwards;
+    animation-timing-function: ease-in-out;
 
     @media (min-width: $stop-scaling) {
       width: calc(100% - 310px);
@@ -148,5 +151,19 @@
     @media (max-width: $mobile) and (orientation: landscape) {
       width: calc(100% - 5rem);
     }
+  }
+
+  .btn::before {
+    animation-name: itemOpacity;
+    animation-duration: $duration-s;
+    animation-delay: 0.8s;
+    animation-fill-mode: backwards;
+  }
+
+  .form__button {
+    animation-name: changeColor;
+    animation-duration: $duration-s;
+    animation-delay: 1.15s;
+    animation-fill-mode: backwards;
   }
 }
