@@ -1,9 +1,59 @@
+@keyframes flamingoAnimation {
+  from {
+    transform: translateY(100%) rotate(-10deg);
+  }
+
+  to {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+@keyframes flamingoMove {
+  from {
+    transform: rotate(0) translateY(0);
+  }
+
+  to {
+    transform: rotate(-5deg) translateY(5%);
+  }
+}
+
+@keyframes suitcaseAnimation {
+  from {
+    transform: translateY(100%) scale(0);
+  }
+
+  to {
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes rightLeaf {
+  from {
+    transform: translateY(-11%) rotate(-30deg);
+  }
+
+  to {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+@keyframes leftLeaf {
+  from {
+    transform: translateY(-38%) rotate(38deg);
+  }
+
+  to {
+    transform: translateY(0) rotate(0);
+  }
+}
+
 .result {
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
-  padding: 15rem 5.7rem 6rem;
   width: 100%;
+  padding: 15rem 5.7rem 6rem;
+  flex-grow: 1;
 
   @media (min-width: $stop-scaling) {
     padding: 150px 57px 60px;
@@ -22,35 +72,137 @@
   }
 }
 
-.result__image {
+.result__image-wrapper {
   position: absolute;
   top: 0;
-  left: 0;
   right: 0;
   bottom: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  left: 0;
   z-index: -1;
 
   @media (orientation: portrait) {
-    left: -1rem;
     right: -1rem;
+    left: -1rem;
   }
 
-  picture {
+  .result__image {
+    position: absolute;
     display: block;
-    width: 100%;
-    height: 100%;
-  }
+    height: auto;
+    animation-duration: $duration;
+    animation-fill-mode: backwards;
 
-  img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+    &--flamingo {
+      bottom: 18%;
+      left: 26%;
+      width: 37rem;
+      animation-name: itemOpacity, flamingoAnimation, flamingoMove;
+      animation-duration: $duration, $duration, 1.5s;
+      animation-iteration-count: 1, 1, infinite;
+      animation-direction: normal, normal, alternate;
+      animation-delay: $duration, $duration, 1.2s;
+      animation-fill-mode: backwards, backwards, forwards;
+      animation-timing-function: ease-out, ease-out,
+        cubic-bezier(0.54, 0, 0.4, 1);
+
+      @media (max-width: $tablet) {
+        left: 8%;
+        width: 23rem;
+      }
+
+      @media (max-width: $mobile) {
+        bottom: 23%;
+        left: 5%;
+        width: 21rem;
+      }
+    }
+
+    &--suitcase {
+      bottom: 18%;
+      left: 30%;
+      width: 48rem;
+      animation-name: suitcaseAnimation;
+      animation-delay: $duration;
+      animation-timing-function: cubic-bezier(0, 0, 0.6, 1.4);
+
+      @media (max-width: $tablet) {
+        left: 11%;
+        width: 30rem;
+      }
+
+      @media (max-width: $mobile) {
+        bottom: 22%;
+        left: 7%;
+        width: 30rem;
+      }
+    }
+
+    &--right-leaf,
+    &--left-leaf {
+      width: 40rem;
+      animation-duration: $duration-s;
+      animation-delay: 0.8s;
+      animation-timing-function: ease-in-out;
+
+      @media (max-width: $tablet) {
+        width: 16rem;
+      }
+
+      @media (max-width: $mobile) {
+        width: 11rem;
+      }
+    }
+
+    &--right-leaf {
+      bottom: 28%;
+      left: 50%;
+      animation-name: itemOpacity, rightLeaf;
+
+      @media (max-width: $tablet) {
+        left: 55%;
+      }
+
+      @media (max-width: $mobile) {
+        bottom: 45%;
+        left: 62%;
+      }
+    }
+
+    &--left-leaf {
+      bottom: 17%;
+      left: 16%;
+      animation-name: itemOpacity, leftLeaf;
+
+      @media (max-width: $tablet) {
+        left: 7%;
+      }
+
+      @media (max-width: $mobile) {
+        bottom: 30%;
+        left: 7%;
+      }
+    }
+
+    &--green-leaf {
+      bottom: 30%;
+      left: 47%;
+      width: 45rem;
+      animation-name: itemOpacity, rightLeaf;
+      animation-duration: 0.3s;
+      animation-delay: 0.9s;
+
+      @media (max-width: $tablet) {
+        bottom: 34%;
+        left: 43%;
+        width: 22rem;
+      }
+
+      @media (max-width: $mobile) {
+        bottom: 43%;
+        left: 53%;
+        width: 18rem;
+      }
+    }
   }
 }
 
@@ -77,11 +229,11 @@
 
 .result__text {
   margin-bottom: 2rem;
-  text-align: center;
   font-family: $font-alt;
-  font-weight: 400;
   font-size: 4.8rem;
   line-height: 0.906;
+  font-weight: 400;
+  text-align: center;
   letter-spacing: -0.01em;
 
   @media (min-width: $stop-scaling) {
@@ -107,27 +259,27 @@
   @include btn-reset;
   display: flex;
   align-items: center;
-  justify-content: center;
   align-self: center;
-  margin: auto auto 1rem;
+  justify-content: center;
   min-width: 34rem;
-  text-transform: uppercase;
+  margin: auto auto 1rem;
   font-size: 2.4rem;
   line-height: 1.2;
+  text-transform: uppercase;
   color: $c-light;
 
   @media (min-width: $stop-scaling) {
-    margin: auto auto 10px;
     min-width: 340px;
+    margin: auto auto 10px;
     font-size: 24px;
   }
 
   @media (orientation: portrait) {
-    margin: auto 0 0;
-    transform: none;
-    width: 100%;
     min-width: auto;
+    width: 100%;
+    margin: auto 0 0;
     font-size: 1.6rem;
+    transform: none;
   }
 
   @media (max-width: $tablet) and (orientation: landscape) {
@@ -135,47 +287,47 @@
   }
 
   @media (max-width: $mobile) and (orientation: landscape) {
-    margin: auto 0 0;
-    width: 100%;
     min-width: auto;
+    width: 100%;
+    margin: auto 0 0;
     font-size: 1.6rem;
   }
 
   span {
     position: relative;
-    margin-left: 1.5rem;
     width: 4rem;
     height: 4rem;
+    margin-left: 1.5rem;
     color: $c-dark;
 
     @media (min-width: $stop-scaling) {
-      margin-left: 15px;
       width: 40px;
       height: 40px;
+      margin-left: 15px;
     }
 
     &::before {
       @include center;
-      content: "";
+      z-index: -1;
       width: 100%;
       height: 100%;
       background-color: $c-light;
       border: 2px solid $c-light;
       border-radius: 50%;
-      z-index: -1;
+      content: "";
     }
   }
 
   svg {
     @include center;
-    margin-left: 0.3rem;
     width: 2.4rem;
     height: 1.9rem;
+    margin-left: 0.3rem;
 
     @media (min-width: $stop-scaling) {
-      margin-left: 3px;
       width: 24px;
       height: 19px;
+      margin-left: 3px;
     }
   }
 
@@ -234,33 +386,33 @@
     }
 
     @media (max-width: $mobile) and (orientation: landscape) {
-      margin-bottom: 0;
       width: 35rem;
+      margin-bottom: 0;
     }
   }
 }
 
 .result--negative {
   .result__title {
-    margin-top: 9.5rem;
     width: 66.5rem;
     height: 11.3rem;
+    margin-top: 9.5rem;
 
     @media (min-width: $stop-scaling) {
-      margin-top: 95px;
       width: 665px;
       height: 113px;
+      margin-top: 95px;
     }
 
     @media (orientation: portrait) {
-      margin-top: 0;
       width: 28.8rem;
       height: 4.9rem;
+      margin-top: 0;
     }
 
     @media (max-width: $tablet) and (orientation: landscape) {
-      margin-top: 0;
       width: 50rem;
+      margin-top: 0;
     }
 
     @media (max-width: $mobile) and (orientation: landscape) {

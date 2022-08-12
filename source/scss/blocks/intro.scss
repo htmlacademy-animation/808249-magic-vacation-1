@@ -24,6 +24,7 @@
 }
 
 .intro__title {
+  display: inline-flex;
   max-width: 99rem;
   margin: 0;
   font-family: $font-alt;
@@ -31,6 +32,7 @@
   line-height: 0.906;
   font-weight: 400;
   text-transform: uppercase;
+  flex-wrap: wrap;
   letter-spacing: -0.04em;
 
   @media (min-width: $stop-scaling) {

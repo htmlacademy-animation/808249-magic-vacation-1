@@ -9,6 +9,7 @@ import form from "./modules/form.js";
 import social from "./modules/social.js";
 import FullPageScroll from "./modules/full-page-scroll";
 import load from "./modules/load.js";
+import Wrap from "./modules/wrap.js";
 
 // init modules
 mobileHeight();
@@ -22,4 +23,18 @@ social();
 load();
 
 const fullPageScroll = new FullPageScroll();
+const animationIntroTitle = new Wrap({
+  elementSelector: `.intro__title`,
+  hasSeveraLines: true,
+});
+const animationDate = new Wrap({elementSelector: `.intro__date`, delay: 700});
+const animationStoryTitle = new Wrap({
+  elementSelector: `.slider__item-title`,
+});
+const animationPrizesTitle = new Wrap({elementSelector: `.prizes__title`});
+
 fullPageScroll.init();
+animationIntroTitle.init();
+animationDate.init();
+animationStoryTitle.init();
+animationPrizesTitle.init();
