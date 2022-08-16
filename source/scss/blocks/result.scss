@@ -268,6 +268,18 @@
   text-transform: uppercase;
   color: $c-light;
 
+  .screen--show &,
+  .screen--show & span {
+    animation-duration: $duration-s;
+    animation-delay: $duration-l;
+    animation-fill-mode: backwards;
+    animation-timing-function: ease-in-out;
+  }
+
+  .screen--show & {
+    animation-name: itemOpacity;
+  }
+
   @media (min-width: $stop-scaling) {
     min-width: 340px;
     margin: auto auto 10px;
@@ -315,6 +327,10 @@
       border: 2px solid $c-light;
       border-radius: 50%;
       content: "";
+    }
+
+    .screen--show & {
+      animation-name: rollingButtonToLeft;
     }
   }
 

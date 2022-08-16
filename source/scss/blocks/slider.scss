@@ -1,16 +1,6 @@
-@keyframes rollingLeftButton {
+@keyframes rollingButtonToRight {
   from {
     transform: translateX(-100%) rotate(-90deg);
-  }
-
-  to {
-    transform: translateX(0) rotate(0);
-  }
-}
-
-@keyframes rollingRightButton {
-  from {
-    transform: translateX(100%) rotate(90deg);
   }
 
   to {
@@ -204,11 +194,11 @@
   }
 
   .active &:first-child {
-    animation-name: itemOpacity, rollingLeftButton;
+    animation-name: itemOpacity, rollingButtonToRight;
   }
 
   .active & + & {
-    animation-name: itemOpacity, rollingRightButton;
+    animation-name: itemOpacity, rollingButtonToLeft;
   }
 
   @media (min-width: $stop-scaling) {
