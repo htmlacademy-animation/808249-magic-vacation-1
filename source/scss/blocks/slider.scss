@@ -1,3 +1,23 @@
+@keyframes rollingLeftButton {
+  from {
+    transform: translateX(-100%) rotate(-90deg);
+  }
+
+  to {
+    transform: translateX(0) rotate(0);
+  }
+}
+
+@keyframes rollingRightButton {
+  from {
+    transform: translateX(100%) rotate(90deg);
+  }
+
+  to {
+    transform: translateX(0) rotate(0);
+  }
+}
+
 .slider {
   position: relative;
   width: 100%;
@@ -173,6 +193,23 @@
   width: 4rem;
   height: 4rem;
   color: $c-dark;
+  animation-name: none;
+  animation-duration: $duration-s;
+  animation-delay: $duration-m;
+  animation-fill-mode: backwards;
+  animation-timing-function: ease-in-out;
+
+  .screen:not(.active) & {
+    display: none;
+  }
+
+  .active &:first-child {
+    animation-name: itemOpacity, rollingLeftButton;
+  }
+
+  .active & + & {
+    animation-name: itemOpacity, rollingRightButton;
+  }
 
   @media (min-width: $stop-scaling) {
     width: 40px;
