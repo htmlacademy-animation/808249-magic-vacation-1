@@ -182,12 +182,15 @@
   position: relative;
   width: 4rem;
   height: 4rem;
-  color: $c-dark;
+  color: $c-purple;
+  transition-duration: $duration-s;
+  transition-property: transform, color;
   animation-name: none;
   animation-duration: $duration-s;
   animation-delay: $duration-m;
   animation-fill-mode: backwards;
   animation-timing-function: ease-in-out;
+  will-change: color;
 
   .screen:not(.active) & {
     display: none;
@@ -199,6 +202,18 @@
 
   .active & + & {
     animation-name: itemOpacity, rollingButtonToLeft;
+  }
+
+  .story.slide-two & {
+    color: $c-blue;
+  }
+
+  .story.slide-three & {
+    color: $c-l-blue;
+  }
+
+  .story.slide-four & {
+    color: $c-dark;
   }
 
   @media (min-width: $stop-scaling) {
@@ -214,6 +229,9 @@
     background-color: $c-light;
     border: 2px solid $c-light;
     border-radius: 50%;
+    transition-duration: $duration-s;
+    transition-property: border-color, background-color;
+    will-change: border-color, background-color;
     content: "";
   }
 
@@ -232,11 +250,7 @@
 
   &:hover {
     color: $c-purple;
-
-    &::before {
-      width: 112.5%;
-      height: 112.5%;
-    }
+    transform: scale(1.1);
   }
 
   &:focus {
@@ -245,18 +259,49 @@
 
     &::before {
       border-color: $c-purple;
+
+      .story.slide-two & {
+        border-color: $c-blue;
+      }
+
+      .story.slide-three & {
+        border-color: $c-l-blue;
+      }
+
+      .story.slide-four & {
+        border-color: $c-dark;
+      }
     }
   }
 
   &:active,
-  &:active:focus {
+  .story.slide-two &:active,
+  .story.slide-three &:active,
+  .story.slide-four &:active {
     color: $c-light;
+  }
+
+  &:active {
+    transform: scale(1);
 
     &::before {
-      width: 100%;
-      height: 100%;
       background-color: $c-purple;
       border-color: $c-purple;
+
+      .story.slide-two & {
+        background-color: $c-blue;
+        border-color: $c-blue;
+      }
+
+      .story.slide-three & {
+        background-color: $c-l-blue;
+        border-color: $c-l-blue;
+      }
+
+      .story.slide-four & {
+        background-color: $c-dark;
+        border-color: $c-dark;
+      }
     }
   }
 
