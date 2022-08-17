@@ -19,18 +19,37 @@
   @include btn-reset;
   position: relative;
   display: block;
-  width: 0;
-  height: 0;
+  width: 4rem;
+  height: 4rem;
   color: $c-dark;
+  border: 2px solid transparent;
   border-radius: 50%;
+  transform: scale(0);
   transition-duration: $duration-s, $duration, $duration;
-  transition-property: background-color, width, height;
+  transition-property: background-color, border-color, transform, color;
   transition-timing-function: linear, cubic-bezier(0.36, 1.19, 1, 0.91),
     cubic-bezier(0.36, 1.19, 1, 0.91);
 
+  will-change: background-color, border-color, color;
+
   .loaded & {
-    width: 4rem;
-    height: 4rem;
+    transform: scale(1);
+  }
+
+  .story & {
+    color: $c-purple;
+  }
+
+  .story.slide-two & {
+    color: $c-blue;
+  }
+
+  .story.slide-three & {
+    color: $c-l-blue;
+  }
+
+  .story.slide-four & {
+    color: $c-dark;
   }
 
   @media (max-width: $tablet) and (orientation: portrait) {
@@ -60,42 +79,88 @@
     height: 2.2rem;
     transition-duration: $duration-s;
     transition-property: all;
+
+    .slide-one & {
+      color: $c-purple;
+    }
   }
 
   &:hover,
-  &.focus,
+  &:focus,
   .social-block--active & {
-    &::before {
-      width: 112.5%;
-      height: 112.5%;
+    color: $c-purple;
+    border-color: $c-light;
+
+    .story & {
+      color: $c-dark;
+    }
+
+    .story.slide-two & {
+      color: $c-l-blue;
+    }
+
+    .story.slide-three & {
+      color: $c-blue;
+    }
+
+    .story.slide-four & {
+      color: $c-purple;
     }
   }
 
   &:focus {
-    color: $c-light;
-    outline: none;
-
-    &::before {
-      width: 100%;
-      height: 100%;
-      background-color: $c-purple;
-    }
+    background-color: $c-light;
+    border-color: $c-purple;
 
     & + .social-block__list {
       opacity: 1;
       pointer-events: auto;
     }
+
+    .story & {
+      border-color: $c-dark;
+    }
+
+    .story.slide-two & {
+      border-color: $c-l-blue;
+    }
+
+    .story.slide-three & {
+      border-color: $c-blue;
+    }
+
+    .story.slide-four & {
+      border-color: $c-purple;
+    }
   }
 
   &:active,
-  &:active:focus {
+  .story &:active,
+  .story.slide-two &:active,
+  .story.slide-three &:active,
+  .story.slide-four &:active {
     color: $c-light;
+    border: none;
+    transform: scale(1);
+  }
 
-    &::before {
-      width: 100%;
-      height: 100%;
+  &:active::before {
+    background-color: $c-purple;
+
+    .story & {
+      background-color: $c-dark;
+    }
+
+    .story.slide-two & {
+      background-color: $c-l-blue;
+    }
+
+    .story.slide-three & {
+      background-color: $c-blue;
+    }
+
+    .story.slide-four & {
       background-color: $c-purple;
-      border-color: $c-purple;
     }
   }
 }
@@ -148,16 +213,8 @@
     }
   }
 
-  &:hover {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  &:focus-within {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
+  &:hover,
+  &:focus-within,
   .social-block--active & {
     opacity: 1;
     pointer-events: auto;
@@ -191,6 +248,7 @@
   border-radius: 50%;
   opacity: 0;
   transform: translateY(10px);
+  will-change: border-color, color, background-color;
 
   @media (min-width: $stop-scaling) {
     width: 40px;
@@ -209,21 +267,66 @@
 
   &:hover {
     color: $c-purple;
+
+    .story & {
+      color: $c-dark;
+    }
+
+    .story.slide-two & {
+      color: $c-l-blue;
+    }
+
+    .story.slide-three & {
+      color: $c-blue;
+    }
+
+    .story.slide-four & {
+      color: $c-purple;
+    }
   }
 
   &:focus {
     color: $c-purple;
     background-color: $c-light;
+    opacity: 1;
     border-color: $c-purple;
     outline: none;
+
+    .story & {
+      color: $c-dark;
+      border-color: $c-dark;
+    }
+
+    .story.slide-two & {
+      color: $c-l-blue;
+      border-color: $c-l-blue;
+    }
+
+    .story.slide-three & {
+      color: $c-blue;
+      border-color: $c-blue;
+    }
+
+    .story.slide-four & {
+      color: $c-purple;
+      border-color: $c-purple;
+    }
   }
 
   &:active,
-  &:active:focus {
-    color: $c-purple;
+  .story &:active,
+  .story.slide-two &:active,
+  .story.slide-three &:active,
+  .story.slide-four &:active {
     background-color: $c-light;
-    border-color: $c-light;
+    border: none;
   }
+
+  // &:active {
+  // color: $c-purple;
+  // background-color: $c-light;
+  // border-color: $c-light;
+  // }
 
   svg {
     @include center;
