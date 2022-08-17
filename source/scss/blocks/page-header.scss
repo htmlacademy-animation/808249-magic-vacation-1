@@ -310,6 +310,38 @@
         width: 100%;
         background-color: $c-purple;
       }
+
+      .story & {
+        color: $c-dark;
+
+        &::after {
+          background-color: $c-dark;
+        }
+      }
+
+      .story.slide-two & {
+        color: $c-l-blue;
+
+        &::after {
+          background-color: $c-l-blue;
+        }
+      }
+
+      .story.slide-three & {
+        color: $c-blue;
+
+        &::after {
+          background-color: $c-blue;
+        }
+      }
+
+      .story.slide-four & {
+        color: $c-purple;
+
+        &::after {
+          background-color: $c-purple;
+        }
+      }
     }
   }
 }
