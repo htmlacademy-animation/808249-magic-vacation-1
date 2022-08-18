@@ -91,6 +91,11 @@ export default class FullPageScroll {
 
   setActiveScreen() {
     this.screenElements[this.activeScreen].classList.remove(`screen--hidden`);
+    if (this.screenElements[this.activeScreen].id === `story`) {
+      document.body.classList.add(`story`);
+    } else {
+      document.body.classList.remove(`story`);
+    }
     setTimeout(() => {
       this.screenElements[this.activeScreen].classList.add(`active`);
     }, 100);

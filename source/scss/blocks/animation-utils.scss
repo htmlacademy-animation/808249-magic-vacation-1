@@ -28,3 +28,13 @@
     transform: scaleX(0);
   }
 }
+
+@keyframes rollingButtonToLeft {
+  from {
+    transform: translateX(100%) rotate(90deg);
+  }
+
+  to {
+    transform: translateX(0) rotate(0);
+  }
+}
